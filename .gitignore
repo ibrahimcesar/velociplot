@@ -41,3 +41,4 @@ Cargo.lock
 
 # OS
 Thumbs.db
+.vscode/branch-timer.json

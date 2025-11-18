@@ -1,13 +1,13 @@
 [package]
 name = "velociplot"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 rust-version = "1.70"
-authors = ["Your Name <your.email@example.com>"]
-license = "MIT OR Apache-2.0"
+authors = ["Ibrahim Cesar <email@ibrahimcesar.com>"]
+license = "MIT"
 description = "Fast, publication-quality scientific plotting library - Quick, precise, and deadly effective"
-homepage = "https://github.com/yourusername/velociplot"
-repository = "https://github.com/yourusername/velociplot"
+homepage = "https://github.com/ibrahimcesar/velociplot"
+repository = "https://github.com/ibrahimcesar/velociplot"
 documentation = "https://docs.rs/velociplot"
 keywords = ["plotting", "visualization", "graphics", "charts", "scientific"]
 categories = ["graphics", "visualization", "science"]
@@ -54,19 +54,27 @@ default = []
 cli = ["dep:clap"]
 
 # Output formats
-png = []  # ["dep:image"]
-svg = []  # ["dep:svg"]
-pdf = []  # ["dep:printpdf"]
+png = [] # ["dep:image"]
+svg = [] # ["dep:svg"]
+pdf = [] # ["dep:printpdf"]
 
 # Math rendering
-latex = []  # ["dep:rustybuzz"]
+latex = [] # ["dep:rustybuzz"]
 
 # Data integration
-ndarray-support = []  # ["dep:ndarray"]
+ndarray-support = [] # ["dep:ndarray"]
 polars-support = []  # ["dep:polars"]
 
 # All features
-full = ["cli", "png", "svg", "pdf", "latex", "ndarray-support", "polars-support"]
+full = [
+    "cli",
+    "png",
+    "svg",
+    "pdf",
+    "latex",
+    "ndarray-support",
+    "polars-support",
+]
 
 [profile.release]
 opt-level = 3
