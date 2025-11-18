@@ -1,0 +1,94 @@
+[package]
+name = "velociplot"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+authors = ["Your Name <your.email@example.com>"]
+license = "MIT OR Apache-2.0"
+description = "Fast, publication-quality scientific plotting library - Quick, precise, and deadly effective"
+homepage = "https://github.com/yourusername/velociplot"
+repository = "https://github.com/yourusername/velociplot"
+documentation = "https://docs.rs/velociplot"
+keywords = ["plotting", "visualization", "graphics", "charts", "scientific"]
+categories = ["graphics", "visualization", "science"]
+readme = "README.md"
+
+[lib]
+name = "velociplot"
+path = "src/lib.rs"
+
+[[bin]]
+name = "vplot"
+path = "src/bin/vplot.rs"
+required-features = ["cli"]
+
+[dependencies]
+# Core dependencies
+thiserror = "1.0"
+
+# Optional: CLI support
+clap = { version = "4.5", features = ["derive", "cargo"], optional = true }
+
+# Optional: Output formats
+# image = { version = "0.24", optional = true }
+# svg = { version = "0.14", optional = true }
+# printpdf = { version = "0.7", optional = true }
+
+# Optional: Math rendering
+# rustybuzz = { version = "0.12", optional = true }  # For text shaping
+
+# Optional: Color handling
+# palette = { version = "0.7", optional = true }
+
+# Optional: Integration
+# ndarray = { version = "0.15", optional = true }
+# polars = { version = "0.35", optional = true }
+
+[dev-dependencies]
+approx = "0.5"
+
+[features]
+default = []
+
+# CLI tool
+cli = ["dep:clap"]
+
+# Output formats
+png = []  # ["dep:image"]
+svg = []  # ["dep:svg"]
+pdf = []  # ["dep:printpdf"]
+
+# Math rendering
+latex = []  # ["dep:rustybuzz"]
+
+# Data integration
+ndarray-support = []  # ["dep:ndarray"]
+polars-support = []  # ["dep:polars"]
+
+# All features
+full = ["cli", "png", "svg", "pdf", "latex", "ndarray-support", "polars-support"]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+
+[profile.dev]
+opt-level = 0
+
+[profile.bench]
+opt-level = 3
+lto = true
+
+[[example]]
+name = "basic_line"
+path = "examples/basic_line.rs"
+
+[[example]]
+name = "scatter"
+path = "examples/scatter.rs"
+
+[[example]]
+name = "histogram"
+path = "examples/histogram.rs"
