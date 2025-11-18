@@ -1,8 +1,8 @@
 <div align="center">
     
-# velociplot 🦖
+# Velociplot 🦖
 
-> Scientific plotting at velociraptor speed
+_Scientific plotting at velociraptor speed_
 
 **velociplot** (Velociraptor + plot) is a fast, publication-quality plotting library for Rust. Quick, precise, and deadly effective for creating scientific figures.
 
