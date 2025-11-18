@@ -4,13 +4,13 @@
 
 > Scientific plotting at velociraptor speed
 
-</div>
+**velociplot** (Velociraptor + plot) is a fast, publication-quality plotting library for Rust. Quick, precise, and deadly effective for creating scientific figures.
 
-**velociplot** (velocity + plot) is a fast, publication-quality plotting library for Rust. Quick, precise, and deadly effective for creating scientific figures.
+</div>
 
 ## 🎯 What is velociplot?
 
-*Veloci-plot* = velocity + plot  
+*Veloci-plot* = Velociraptor + plot  
 Like a velociraptor: **quick, precise, and deadly effective**
 
 A pure Rust plotting library designed for scientists, engineers, and developers who need high-performance, publication-ready visualizations.
