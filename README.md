@@ -10,7 +10,7 @@
 
 ## 🎯 What is velociplot?
 
-*Veloci-plot* = Velociraptor + plot  
+*Veloci-plot* = Velocity + plot  
 Like a velociraptor: **quick, precise, and deadly effective**
 
 A pure Rust plotting library designed for scientists, engineers, and developers who need high-performance, publication-ready visualizations.
