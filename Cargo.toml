@@ -1,6 +1,6 @@
 [package]
 name = "velociplot"
-version = "0.0.1"
+version = "0.1.0"
 edition = "2021"
 rust-version = "1.70"
 authors = ["Ibrahim Cesar <email@ibrahimcesar.com>"]
@@ -26,11 +26,18 @@ required-features = ["cli"]
 # Core dependencies
 thiserror = "1.0"
 
+# Rendering backend
+tiny-skia = { version = "0.11", optional = true }
+fontdue = { version = "0.9", optional = true }
+
 # Optional: CLI support
 clap = { version = "4.5", features = ["derive", "cargo"], optional = true }
+csv = { version = "1.3", optional = true }
+serde = { version = "1.0", features = ["derive"], optional = true }
+serde_json = { version = "1.0", optional = true }
 
 # Optional: Output formats
-# image = { version = "0.24", optional = true }
+png = { version = "0.17", optional = true }
 # svg = { version = "0.14", optional = true }
 # printpdf = { version = "0.7", optional = true }
 
@@ -41,20 +48,25 @@ clap = { version = "4.5", features = ["derive", "cargo"], optional = true }
 # palette = { version = "0.7", optional = true }
 
 # Optional: Integration
-# ndarray = { version = "0.15", optional = true }
-# polars = { version = "0.35", optional = true }
+ndarray = { version = "0.16", optional = true }
+polars = { version = "0.44", optional = true, default-features = false, features = [
+    "dtype-full",
+] }
 
 [dev-dependencies]
 approx = "0.5"
 
 [features]
-default = []
+default = ["raster"]
+
+# Rendering backend
+raster = ["dep:tiny-skia", "dep:png", "dep:fontdue"]
 
 # CLI tool
-cli = ["dep:clap"]
+cli = ["dep:clap", "dep:csv", "dep:serde", "dep:serde_json", "raster"]
 
-# Output formats
-png = [] # ["dep:image"]
+# Output formats (legacy feature names for compatibility)
+# png feature is now part of raster
 svg = [] # ["dep:svg"]
 pdf = [] # ["dep:printpdf"]
 
@@ -62,13 +74,13 @@ pdf = [] # ["dep:printpdf"]
 latex = [] # ["dep:rustybuzz"]
 
 # Data integration
-ndarray-support = [] # ["dep:ndarray"]
-polars-support = []  # ["dep:polars"]
+ndarray-support = ["dep:ndarray"]
+polars-support = ["dep:polars"]
 
 # All features
 full = [
     "cli",
-    "png",
+    "raster",
     "svg",
     "pdf",
     "latex",
@@ -100,3 +112,112 @@ path = "examples/scatter.rs"
 [[example]]
 name = "histogram"
 path = "examples/histogram.rs"
+
+[[example]]
+name = "custom_font"
+path = "examples/custom_font.rs"
+
+[[example]]
+name = "legend_alignment_test"
+path = "examples/legend_alignment_test.rs"
+
+[[example]]
+name = "scatter_markers"
+path = "examples/scatter_markers.rs"
+
+[[example]]
+name = "bar_plot"
+path = "examples/bar_plot.rs"
+
+[[example]]
+name = "box_plot"
+path = "examples/box_plot.rs"
+
+[[example]]
+name = "qq_plot"
+path = "examples/qq_plot.rs"
+
+[[example]]
+name = "pp_plot"
+path = "examples/pp_plot.rs"
+
+[[example]]
+name = "violin_plot"
+path = "examples/violin_plot.rs"
+
+[[example]]
+name = "axis_labels"
+path = "examples/axis_labels.rs"
+
+[[example]]
+name = "legend_auto_position"
+path = "examples/legend_auto_position.rs"
+
+[[example]]
+name = "svg_export"
+path = "examples/svg_export.rs"
+
+[[example]]
+name = "math_notation"
+path = "examples/math_notation.rs"
+
+[[example]]
+name = "legend_below"
+path = "examples/legend_below.rs"
+
+[[example]]
+name = "colormaps"
+path = "examples/colormaps.rs"
+
+[[example]]
+name = "legend_separate"
+path = "examples/legend_separate.rs"
+
+[[example]]
+name = "ndarray_integration"
+path = "examples/ndarray_integration.rs"
+
+[[example]]
+name = "polars_integration"
+path = "examples/polars_integration.rs"
+
+[[example]]
+name = "heatmap"
+path = "examples/heatmap.rs"
+
+[[example]]
+name = "bubble"
+path = "examples/bubble.rs"
+
+[[example]]
+name = "legend_types"
+path = "examples/legend_types.rs"
+
+[[example]]
+name = "bar_legend"
+path = "examples/bar_legend.rs"
+
+[[example]]
+name = "stacked_bar"
+path = "examples/stacked_bar.rs"
+
+[[example]]
+name = "area"
+path = "examples/area.rs"
+
+[[example]]
+name = "treemap"
+path = "examples/treemap.rs"
+
+[[example]]
+name = "timeline"
+path = "examples/timeline.rs"
+
+[[example]]
+name = "datelistplot"
+path = "examples/datelistplot.rs"
+
+# Real-world data examples
+[[example]]
+name = "climate_nasa"
+path = "examples/real-world/climate_nasa.rs"

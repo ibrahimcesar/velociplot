@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/ibrahimcesar/velociplot/discussions
+    about: Ask questions, share ideas, or discuss Velociplot with the community
+  - name: 🔒 Security Issue
+    url: https://github.com/ibrahimcesar/velociplot/security/advisories/new
+    about: Report a security vulnerability privately (please do not open a public issue)
+  - name: 📚 Documentation
+    url: https://docs.rs/velociplot
+    about: Read the API documentation on docs.rs

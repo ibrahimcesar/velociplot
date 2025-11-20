@@ -1,0 +1,8 @@
+{
+  "label": "Real-World Examples",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn Velociplot by working with real public datasets from government agencies, research institutions, and open data initiatives."
+  }
+}

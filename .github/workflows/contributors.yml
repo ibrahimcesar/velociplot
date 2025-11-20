@@ -1,0 +1,16 @@
+name: All Contributors
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  add-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: all-contributors/all-contributors-cli@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

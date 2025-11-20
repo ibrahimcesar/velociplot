@@ -1,0 +1,113 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for Velociplot
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! We appreciate your input to make Velociplot better.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem? Please describe.
+      placeholder: I'm always frustrated when... I need to... but there's no way to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see.
+      placeholder: |
+        I would like to be able to...
+
+        Example API:
+        ```rust
+        let plot = LinePlot::new(data)
+            .new_feature(...);
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe alternatives you've considered or workarounds you're currently using.
+      placeholder: I tried... but it doesn't work because...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature is this?
+      options:
+        - New plot type
+        - API enhancement
+        - Performance improvement
+        - Documentation
+        - CLI feature
+        - Output format (SVG, PDF, etc.)
+        - Data integration (ndarray, polars, etc.)
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical (blocking my use)
+        - High (needed for production use)
+        - Medium (would be nice to have)
+        - Low (minor enhancement)
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe your specific use case for this feature.
+      placeholder: |
+        I'm working on... and I need to...
+        This would help with...
+    validations:
+      required: false
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples from Other Libraries
+      description: Are there similar features in other plotting libraries (matplotlib, plotters, etc.)?
+      placeholder: |
+        matplotlib has `plt.feature(...)` which does...
+        plotters has `plot.feature(...)` which...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: willing-to-help
+    attributes:
+      label: Contribution
+      description: Would you be willing to help implement this feature?
+      options:
+        - label: I'd be willing to submit a PR for this feature
+          required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

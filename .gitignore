@@ -17,8 +17,9 @@ Cargo.lock
 *.profdata
 *.profraw
 
-# Output files
+# Output files (but keep example outputs)
 *.png
+!examples/*.png
 *.pdf
 *.svg
 *.eps

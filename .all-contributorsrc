@@ -1,0 +1,32 @@
+{
+  "projectName": "velociplot",
+  "projectOwner": "ibrahimcesar",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "ibrahimcesar",
+      "name": "Ibrahim Cesar",
+      "avatar_url": "https://github.com/ibrahimcesar.png",
+      "profile": "https://ibrahimcesar.cloud",
+      "contributions": [
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "maintenance",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)"
+}

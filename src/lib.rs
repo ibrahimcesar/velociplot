@@ -32,9 +32,10 @@
 #![allow(clippy::module_name_repetitions)]
 
 /// Core plotting types and traits
-pub mod core {
-    //! Core abstractions for plotting
-}
+pub mod core;
+
+/// Rendering backends
+pub mod backend;
 
 /// Figure and subplot management
 pub mod figure {
@@ -42,36 +43,22 @@ pub mod figure {
 }
 
 /// Plot types (line, scatter, bar, etc.)
-pub mod plots {
-    //! Different plot types
-    
-    /// Line plot
-    pub mod line {}
-    
-    /// Scatter plot
-    pub mod scatter {}
-    
-    /// Bar chart
-    pub mod bar {}
-    
-    /// Histogram
-    pub mod histogram {}
-}
+pub mod plots;
+
+/// Color definitions and utilities
+pub mod color;
 
 /// Axes, labels, and ticks
-pub mod axes {
-    //! Axis configuration and rendering
-}
+pub mod axes;
 
-/// Color handling and colormaps
-pub mod color {
-    //! Color definitions and palettes
-}
+/// Legend rendering
+pub mod legend;
 
-/// Text rendering and LaTeX support
-pub mod text {
-    //! Text and math rendering
-}
+/// Text rendering and math notation support
+pub mod text;
+
+/// Data integration (ndarray, polars, etc.)
+pub mod integration;
 
 /// Output formats (PNG, PDF, SVG)
 pub mod output {
@@ -86,25 +73,25 @@ pub mod style {
 /// Error types
 pub mod error {
     //! Error definitions
-    
+
     use thiserror::Error;
-    
+
     /// Main error type for velociplot
     #[derive(Error, Debug)]
     pub enum Error {
         /// IO error
         #[error("IO error: {0}")]
         Io(#[from] std::io::Error),
-        
+
         /// Invalid data
         #[error("Invalid data: {0}")]
         InvalidData(String),
-        
+
         /// Rendering error
         #[error("Rendering error: {0}")]
         Rendering(String),
     }
-    
+
     /// Result type alias
     pub type Result<T> = std::result::Result<T, Error>;
 }
@@ -116,11 +103,35 @@ pub mod prelude {
     //! ```rust
     //! use velociplot::prelude::*;
     //! ```
-    
-    pub use crate::core::*;
-    pub use crate::figure::*;
-    pub use crate::plots::*;
+
+    pub use crate::axes::{Axis, AxisPosition, LabelAlignment};
+    pub use crate::color::{Color, Colormap, Palette};
+    pub use crate::core::{Bounds, Canvas, DataSeries, Drawable, Point2D, Series};
     pub use crate::error::{Error, Result};
+    pub use crate::legend::{
+        BarLegend, BarLegendPosition, HorizontalAlignment, Legend, LegendEntry, LegendPosition,
+        LegendShape, MarkerShape as LegendMarker,
+    };
+    pub use crate::plots::area::{AreaPlot, StackedAreaPlot};
+    pub use crate::plots::bar::{BarOrientation, BarPlot};
+    pub use crate::plots::boxplot::{BoxPlot, OutlierMethod};
+    pub use crate::plots::bubble::BubbleChart;
+    pub use crate::plots::datelistplot::{DateListPlot, DateListStyle};
+    pub use crate::plots::heatmap::{Heatmap, ValueFormat};
+    pub use crate::plots::histogram::{BinStrategy, Histogram};
+    pub use crate::plots::line::LinePlot;
+    pub use crate::plots::qq::{Distribution, PPPlot, QQPlot};
+    pub use crate::plots::scatter::{MarkerShape, MarkerStyle, ScatterPlot};
+    pub use crate::plots::stacked_bar::StackedBarPlot;
+    pub use crate::plots::timeline::{Timeline, TimelineOrientation};
+    pub use crate::plots::treemap::Treemap;
+    pub use crate::plots::violin::{Kernel, ViolinPlot};
+    pub use crate::text::{parse_math, MathNotation};
+
+    #[cfg(feature = "raster")]
+    pub use crate::backend::SkiaCanvas;
+
+    pub use crate::backend::SvgCanvas;
 }
 
 // Re-exports
@@ -128,8 +139,6 @@ pub use error::{Error, Result};
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_placeholder() {
         // Placeholder test
